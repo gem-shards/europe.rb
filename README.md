@@ -117,6 +117,13 @@ Response
    "Estonia" => :EE,
 ```
 
+## Todo
+
+- Add more country information
+- Eurostat integration (http://ec.europa.eu/eurostat/)
+- VAT number format validation (http://ec.europa.eu/taxation_customs/vies/faqvies.do#item11)
+- ..
+
 ## Contributing
 
 1. Fork it ( https://github.com/VvanGemert/europe/fork )
