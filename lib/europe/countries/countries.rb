@@ -1,3 +1,6 @@
+#!/bin/env ruby
+# encoding: utf-8
+
 # Source: http://publications.europa.eu/code/pdf/370000en.htm
 
 # Europe Gem

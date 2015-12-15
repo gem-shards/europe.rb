@@ -46,7 +46,7 @@ module Europe
 
       def self.fetch_rates
         uri, params = generate_url
-        req = Net::HTTP::Post.new(uri)
+        req = Net::HTTP::Post.new(uri.path)
         req.body = params
         resp = Net::HTTP.start(uri.hostname, uri.port) do |http|
           http.request(req)
