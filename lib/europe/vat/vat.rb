@@ -1,4 +1,5 @@
 require 'europe/vat/rates'
+require 'europe/vat/format'
 require 'savon'
 
 # Europe Gem
