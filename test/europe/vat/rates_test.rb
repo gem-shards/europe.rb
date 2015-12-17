@@ -2,7 +2,7 @@ require 'test_helper'
 
 module Europe
   module Vat
-    # CurrencyTest
+    # RatesTest
     class RatesTest < Minitest::Test
       include Benchmark
 

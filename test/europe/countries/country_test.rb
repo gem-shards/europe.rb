@@ -2,7 +2,7 @@ require 'test_helper'
 
 module Europe
   module Countries
-    # CurrencyTest
+    # CountryTest
     class CountryTest < Minitest::Test
       include Benchmark
 

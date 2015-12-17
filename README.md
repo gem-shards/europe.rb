@@ -117,6 +117,12 @@ Response
    "Estonia" => :EE,
 ```
 
+## Compatibility
+
+This gem is tested with the following Ruby versions on Linux and Mac OS X:
+
+- Ruby MRI 1.9.3, 2.0.0, 2.1.8, 2.2.0, 2.2.3, 2.2.4
+
 ## Todo
 
 - Add more country information

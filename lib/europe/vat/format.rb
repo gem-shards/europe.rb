@@ -19,7 +19,7 @@ module Europe
       }
 
       def self.validate(country_code, number)
-        if VAT_REGEX[country_code.to_sym].is_a?
+        if VAT_REGEX[country_code.to_sym].is_a?(Array)
           VAT_REGEX[country_code.to_sym].each do |regex|
             return true if regex.match(number)
           end

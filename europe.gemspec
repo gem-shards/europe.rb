@@ -8,10 +8,13 @@ Gem::Specification.new do |spec|
   spec.version       = Europe::VERSION
   spec.authors       = ['VvanGemert']
   spec.email         = ['vincent@floorplanner.com']
-  spec.summary       = 'Europe is a helper gem for retrieving \
-                        EU government data'
-  spec.description   = 'This gem retrieves data from EU government websites'
-  spec.homepage      = ''
+  spec.summary       = 'Europe is a gem for retrieving and validating \
+                        EU government data.'
+  spec.description   = 'Europe is a simple library for retrieving \
+                        EU government data such as VAT information, \
+                        VAT validation, currency exchange rates and \
+                        country information.'
+  spec.homepage      = 'https://github.com/VvanGemert/europe'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`.split("\x0")
@@ -27,4 +30,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'minitest'
   spec.add_development_dependency 'awesome_print'
   spec.add_development_dependency 'pry'
+  spec.add_development_dependency 'rubocop'
 end
