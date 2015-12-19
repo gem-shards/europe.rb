@@ -38,6 +38,17 @@ Response
   :address=>"6 CENTAURS BUSINESS PARK\nGRANT WAY\nISLEWORTH\nMIDDLESEX\n\nTW7 5QD" }
 ```
 
+### Validate VAT number format
+Call
+```ruby
+Europe::Vat::Format.validate('NL123456789B01')
+```
+Response
+```ruby
+=> true
+```
+
+
 ### Retrieving VAT rates for each EC/EU member
 Call
 ```ruby
@@ -127,7 +138,7 @@ This gem is tested with the following Ruby versions on Linux and Mac OS X:
 
 - Add more country information
 - Eurostat integration (http://ec.europa.eu/eurostat/)
-- VAT number format validation (http://ec.europa.eu/taxation_customs/vies/faqvies.do#item11)
+- ~~ VAT number format validation (http://ec.europa.eu/taxation_customs/vies/faqvies.do#item11)~~
 - ..
 
 ## Contributing
