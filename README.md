@@ -138,7 +138,7 @@ This gem is tested with the following Ruby versions on Linux and Mac OS X:
 
 - Add more country information
 - Eurostat integration (http://ec.europa.eu/eurostat/)
-- ~~ VAT number format validation (http://ec.europa.eu/taxation_customs/vies/faqvies.do#item11)~~
+-  ~~VAT number format validation (http://ec.europa.eu/taxation_customs/vies/faqvies.do#item11)~~
 - ..
 
 ## Contributing
