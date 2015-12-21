@@ -103,20 +103,27 @@ Europe::Countries::COUNTRIES
 ```
 Response
 ```ruby
-{ :BE=>{ 
-    :name=>"Belgium",
-    :source_name=>"Belgique/België",
-    :official_name=>"Kingdom of Belgium" },
-  :BG=>{ 
-    :name=>"Bulgaria",
-    :source_name=>"България",
-    :official_name=>"Republic of Bulgaria" },
+{:BE=>
+  {:name=>"Belgium",
+   :source_name=>"Belgique/België",
+   :official_name=>"Kingdom of Belgium",
+   :tld=>".be",
+   :currency=>:EUR,
+   :capital=>"Brussels"},
+ :BG=>
+  {:name=>"Bulgaria",
+   :source_name=>"България",
+   :official_name=>"Republic of Bulgaria",
+   :tld=>".bg",
+   :currency=>:BGN,
+   :capital=>"Sofia"},
+ ...
 ```
 
 ## Retrieving country information reversed
-Call
+Call with optional parameters (name, currency, source_name, official_name, tld, currency and capital) 
 ```ruby
-Europe::Countries.name_to_code
+Europe::Countries::Reversed.generate('name')
 ```
 Response
 ```ruby
@@ -136,9 +143,9 @@ This gem is tested with the following Ruby versions on Linux and Mac OS X:
 
 ## Todo
 
-- Add more country information
+- ~~VAT number format validation (http://ec.europa.eu/taxation_customs/vies/faqvies.do#item11)~~
+- ~~Add more country information~~
 - Eurostat integration (http://ec.europa.eu/eurostat/)
--  ~~VAT number format validation (http://ec.europa.eu/taxation_customs/vies/faqvies.do#item11)~~
 - ..
 
 ## Contributing

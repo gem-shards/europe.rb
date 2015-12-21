@@ -17,7 +17,8 @@ module Europe
       private
 
       def self.extract_country_code(data)
-        Europe::Countries.name_to_code[data.css('td').first.text.strip!]
+        Europe::Countries::Reversed.generate(:name) \
+          [data.css('td').first.text.strip!]
       end
 
       def self.extract_rate_number(data)

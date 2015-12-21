@@ -7,7 +7,8 @@ module Europe
       include Benchmark
 
       def test_country_by_name
-        reversed_hash = Europe::Countries.name_to_code
+        reversed_hash =
+          Europe::Countries::Reversed.generate(:name)
         assert_equal reversed_hash['Netherlands'], :NL
         assert_equal reversed_hash['Ireland'], :IE
       end
