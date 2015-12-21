@@ -24,9 +24,10 @@ There are several calls you can make with this gem. Below are a few examples
 where this gem can be used for.
 
 ### Validating VAT numbers
-Call
+** Updated: Parameter now consists of one value.**
+Call to validate VAT number (always starts with country code as specified in VIES)
 ```ruby
-Europe::Vat.validate('GB', '440627467')
+Europe::Vat.validate('GB440627467')
 ```
 Response
 ```ruby
@@ -94,6 +95,7 @@ Response
 CURRENCIES = {
   EUR: { name: 'Euro', symbol: '€', html: '&euro;' },
   BGN: { name: 'Lev', symbol: 'лв', html: '&#1083;&#1074;' },
+  # etc...
 ```
 
 ## Retrieving country information
@@ -118,7 +120,7 @@ Response
    :tld=>".bg",
    :currency=>:BGN,
    :capital=>"Sofia"},
-...
+ # etc...
 ```
 
 ## Retrieving country information reversed
@@ -134,7 +136,7 @@ Response
    "Denmark" => :DK,
    "Germany" => :DE,
    "Estonia" => :EE,
-...
+   # etc...
 ```
 
 ## Compatibility
