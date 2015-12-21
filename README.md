@@ -103,7 +103,8 @@ Europe::Countries::COUNTRIES
 ```
 Response
 ```ruby
-{:BE=>
+{
+ :BE=>
   {:name=>"Belgium",
    :source_name=>"Belgique/België",
    :official_name=>"Kingdom of Belgium",
@@ -117,7 +118,7 @@ Response
    :tld=>".bg",
    :currency=>:BGN,
    :capital=>"Sofia"},
- ...
+...
 ```
 
 ## Retrieving country information reversed
@@ -133,6 +134,7 @@ Response
    "Denmark" => :DK,
    "Germany" => :DE,
    "Estonia" => :EE,
+...
 ```
 
 ## Compatibility
