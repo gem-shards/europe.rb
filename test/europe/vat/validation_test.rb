@@ -14,7 +14,8 @@ module Europe
       def test_validation_of_correct_vat_number
         # PostNL
         validate_correct_vat = Europe::Vat.validate('NL', '009291477B01')
-        assert validate_correct_vat[:valid]
+        assert validate_correct_vat[:valid] \
+          unless validate_correct_vat == :fault
 
         # Sky
         validate_correct_vat = Europe::Vat.validate('GB', '440627467')
