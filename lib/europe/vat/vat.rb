@@ -13,10 +13,10 @@ module Europe
       response = send_request(number[0..1], number[2..-1])
       return :failed unless response.success?
       response.body[:check_vat_response].tap { |x| x.delete(:@xmlns) }
-    rescue Savon::SOAPFault => fault
-      return :timeout \
-        if fault.to_hash[:fault][:faultstring] == 'SERVER_BUSY'
-      :fault
+    rescue Savon::HTTPError, Savon::SOAPFault
+      return :failed
+    rescue Timeout::Error
+      return :timeout
     end
 
     private

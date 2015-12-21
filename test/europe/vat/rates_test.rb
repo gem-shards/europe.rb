@@ -6,6 +6,10 @@ module Europe
     class RatesTest < Minitest::Test
       include Benchmark
 
+      def setup
+        WebMock.disable!
+      end
+
       def test_retrieval_of_vat_rates
         rates = Europe::Vat::Rates.retrieve
         assert_equal rates.count, Europe::Countries::COUNTRIES.count

@@ -6,6 +6,10 @@ module Europe
     class ValidationTest < Minitest::Test
       include Benchmark
 
+      def setup
+        WebMock.disable!
+      end
+
       def test_validation_of_false_vat_number
         validate_false_vat = Europe::Vat.validate('NL123456789B01')
         assert_equal false, validate_false_vat[:valid]
@@ -15,15 +19,30 @@ module Europe
         # PostNL
         validate_correct_vat = Europe::Vat.validate('NL009291477B01')
         assert validate_correct_vat[:valid] \
-          unless validate_correct_vat == :fault
+          unless validate_correct_vat == :failed
 
         # Sky
         validate_correct_vat = Europe::Vat.validate('GB440627467')
-        assert validate_correct_vat[:valid]
+        assert validate_correct_vat[:valid] \
+          unless validate_correct_vat == :failed
 
         # Volkswagen
         validate_correct_vat = Europe::Vat.validate('DE115235681')
-        assert validate_correct_vat[:valid]
+        assert validate_correct_vat[:valid] \
+          unless validate_correct_vat == :failed
+      end
+
+      def test_failed_request_to_soap_service
+        WebMock.enable!
+        stub_request(:any, 'http://ec.europa.eu/taxation_customs' \
+                           '/vies/checkVatService.wsdl').to_timeout
+        Europe::Vat.validate('DE115235681')
+
+        stub_request(:get, 'http://ec.europa.eu/taxation_customs/vies/checkVatService.wsdl')
+          .with(headers: { 'Accept' => '*/*', 'User-Agent' => 'Ruby' })
+          .to_return(status: 421, body: '')
+        Europe::Vat.validate('DE115235681')
+        WebMock.disable!
       end
     end
   end
