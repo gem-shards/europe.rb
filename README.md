@@ -2,6 +2,20 @@
 
 This gem provides EU governmental data, extracted from various EU / EC websites. With this gem you can validate VAT numbers, retrieve VAT tax rates and currency exchange rates matched to the Euro. How to use this gem is pretty straightforward and written below.
 
+## Table of Contents
+- [Installation](#installation)
+- [Usage](#usage)
+  - [Validating VAT numbers](#validating-vat-numbers)
+  - [Validate VAT number format](#validate-vat-number-format)
+  - [Retrieving VAT rates for each EC/EU member](#retrieving-vat-rates-for-each-eceu-member)
+  - [Retrieving currency exchange rates](#retrieving-currency-exchange-rates)
+  - [Retrieving currency information](#retrieving-currency-information)
+  - [Retrieving country information](#retrieving-country-information)
+  - [Retrieving country information reversed](#retrieving-country-information-reversed)
+- [Compatibility](#compatibility)
+- [Todo](#todo)
+- [Contributing](#contributing)
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -98,7 +112,7 @@ CURRENCIES = {
   # etc...
 ```
 
-## Retrieving country information
+### Retrieving country information
 Call
 ```ruby
 Europe::Countries::COUNTRIES
