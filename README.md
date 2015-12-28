@@ -1,3 +1,4 @@
+![Europe gem logo](https://s3-eu-west-1.amazonaws.com/valorsis.s3-website-eu-west-1.amazonaws.com/static/logo256.png)
 # Europe
 
 This gem provides EU governmental data, extracted from various EU / EC websites. With this gem you can validate VAT numbers, retrieve VAT tax rates and currency exchange rates matched to the Euro. How to use this gem is pretty straightforward and written below.
