@@ -19,6 +19,16 @@ module Europe
       return :timeout
     end
 
+    def self.charge_vat?(origin_country, number)
+      return false if number.nil? || number.empty?
+      if origin_country.to_sym == number[0..1].to_sym
+        true
+      else
+        Europe::Countries::COUNTRIES
+          .keys.include?(number[0..1].to_sym)
+      end
+    end
+
     private
 
     def self.send_request(country_code, number)

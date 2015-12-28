@@ -37,7 +37,22 @@ module Europe
 
       def self.validate(number)
         country_code = number[0..1].to_sym
+        number = sanitize_number(number, country_code)
         return false unless VAT_REGEX.keys.include?(country_code)
+        match_vat_number(number, country_code)
+      end
+
+      def self.sanitize_number(number, country_code)
+        if [:GB, :DK, :FR].include?(country_code)
+          number.gsub(/\.|\t/, '').upcase
+        else
+          number.gsub(/\.|\t|\s/, '').upcase
+        end
+      end
+
+      private
+
+      def self.match_vat_number(number, country_code)
         if VAT_REGEX[country_code.to_sym].is_a?(Array)
           VAT_REGEX[country_code.to_sym].each do |regex|
             return true if regex.match(number)
