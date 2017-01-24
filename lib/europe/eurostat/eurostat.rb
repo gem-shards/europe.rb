@@ -6,8 +6,9 @@ require 'json'
 module Europe
   # Eurostat
   module Eurostat
+    # http://ec.europa.eu/eurostat/data/database
     STAT_URL = 'http://ec.europa.eu/eurostat/wdds' \
-               '/rest/data/v1.1/json/en/'.freeze
+               '/rest/data/v2.1/json/en/'.freeze
 
     def self.retrieve(dataset, filters)
       fetch_stats(dataset, filters)
@@ -21,6 +22,8 @@ module Europe
         indic_na: 'B1GM', unitLabel: 'code'
       }
       uri.query = URI.encode_www_form(params)
+      p URI.encode_www_form(params)
+      p uri.to_s
       uri
     end
 
