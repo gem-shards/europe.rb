@@ -37,7 +37,8 @@ module Europe
         RO: 'RO999999999',
         SE: 'SE999999999999',
         SI: 'SI99999999',
-        SK: 'SK9999999999' }
+        SK: 'SK9999999999'
+      }.freeze
 
       def test_all_vat_numbers_on_format
         VAT_FORMAT_VALIDATION.each do |_country, number|
@@ -63,23 +64,27 @@ module Europe
       def check_character_and_digit(number)
         assert_equal true, Europe::Vat::Format.validate(
           number[0..1] +
-          number[2..-1].gsub(/X/, [*('A'..'Z'), *('0'..'9')].sample))
+          number[2..-1].gsub(/X/, [*('A'..'Z'), *('0'..'9')].sample)
+        )
       end
 
       def check_integer(number)
-        { number[0..1] + number[2..-1].gsub(/9/, [*('0'..'9')].sample) => true,
+        {
+          number[0..1] + number[2..-1].gsub(/9/, [*('0'..'9')].sample) => true,
           number.gsub(/9/, rand(10).to_s) => true,
           number.gsub(/9/, [*('A'..'Z')].sample(1).join) => false
-          }.each do |key, value|
+        }.each do |key, value|
           assert_equal value, Europe::Vat::Format.validate(key)
         end
       end
 
       def check_alphanumeric(number)
         assert_equal true, Europe::Vat::Format.validate(
-          number[0..1] + number[2..-1].gsub(/L/, [*('A'..'Z')].sample))
+          number[0..1] + number[2..-1].gsub(/L/, [*('A'..'Z')].sample)
+        )
         assert_equal false, Europe::Vat::Format.validate(
-          number[0..1] + number[2..-1].gsub(/L/, [*('0'..'9')].sample))
+          number[0..1] + number[2..-1].gsub(/L/, [*('0'..'9')].sample)
+        )
       end
 
       def check_true_values(number)
@@ -88,9 +93,11 @@ module Europe
 
       def check_false_values(number)
         assert_equal false, Europe::Vat::Format.validate(
-          number + [*('A'..'Z'), *('0'..'9')].sample(3).join)
+          number + [*('A'..'Z'), *('0'..'9')].sample(3).join
+        )
         assert_equal false, Europe::Vat::Format.validate(
-          [*('A'..'Z'), *('0'..'9')].sample + number)
+          [*('A'..'Z'), *('0'..'9')].sample + number
+        )
       end
     end
   end

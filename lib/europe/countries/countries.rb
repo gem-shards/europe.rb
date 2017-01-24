@@ -94,6 +94,7 @@ module Europe
       UK: { name: 'United Kingdom', source_name: 'United Kingdom',
             official_name: 'United Kingdom of Great ' \
                            'Britain and Northern Ireland',
-            tld: '.uk', currency: :GBP, capital: 'London' } }
+            tld: '.uk', currency: :GBP, capital: 'London' }
+    }.freeze
   end
 end

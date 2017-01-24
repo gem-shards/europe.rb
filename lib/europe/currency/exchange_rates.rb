@@ -8,12 +8,10 @@ module Europe
     # exchange rates
     module ExchangeRates
       EXCHANGE_URL = 'http://www.ecb.europa.eu/stats/' \
-                     'eurofxref/eurofxref-daily.xml'
+                     'eurofxref/eurofxref-daily.xml'.freeze
       def self.retrieve
         extract_rates(Nokogiri::XML(open(EXCHANGE_URL)))
       end
-
-      private
 
       def self.extract_rates(doc)
         rates = { date: Date.parse(doc.css('Cube Cube').first['time']),

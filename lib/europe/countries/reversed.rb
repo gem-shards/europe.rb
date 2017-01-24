@@ -9,8 +9,6 @@ module Europe
         end
       end
 
-      private
-
       def self.reverse_handle_value(out, key, value, country_value)
         if out[value[country_value.to_sym]]
           reverse_handle_array(out, key, value, country_value)

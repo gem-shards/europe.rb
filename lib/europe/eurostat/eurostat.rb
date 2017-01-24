@@ -7,20 +7,19 @@ module Europe
   # Eurostat
   module Eurostat
     STAT_URL = 'http://ec.europa.eu/eurostat/wdds' \
-               '/rest/data/v1.1/json/en/'
+               '/rest/data/v1.1/json/en/'.freeze
 
     def self.retrieve(dataset, filters)
       fetch_stats(dataset, filters)
     end
-
-    private
 
     def self.generate_url(dataset, _filters)
       uri = URI.parse(STAT_URL + dataset)
       params = {
         precision: 1, geo: 'EU28',
         unit: 'EUR_HAB', time: '2010',
-        indic_na: 'B1GM', unitLabel: 'code' }
+        indic_na: 'B1GM', unitLabel: 'code'
+      }
       uri.query = URI.encode_www_form(params)
       uri
     end

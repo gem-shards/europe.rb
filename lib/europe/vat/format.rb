@@ -33,7 +33,7 @@ module Europe
         SE: /^SE\d{12}$/,
         SI: /^SI\d{8}$/,
         SK: /^SK\d{10}$/
-      }
+      }.freeze
 
       def self.validate(number)
         country_code = number[0..1].to_sym
@@ -50,15 +50,13 @@ module Europe
         end
       end
 
-      private
-
       def self.match_vat_number(number, country_code)
         if VAT_REGEX[country_code.to_sym].is_a?(Array)
           VAT_REGEX[country_code.to_sym].each do |regex|
             return true if regex.match(number)
           end
-        else
-          return true if VAT_REGEX[country_code.to_sym].match(number)
+        elsif VAT_REGEX[country_code.to_sym].match(number)
+          return true
         end
         false
       end

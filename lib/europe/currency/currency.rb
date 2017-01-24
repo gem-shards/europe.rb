@@ -18,6 +18,7 @@ module Europe
       HUF: { name: 'Forint', symbol: 'Ft', html: '&#70;&#116;' },
       PLN: { name: 'Zloty', symbol: 'zł', html: '&#122;&#322;' },
       RON: { name: 'Leu', symbol: 'lei', html: '&#108;&#101;&#105;' },
-      SEK: { name: 'Krona', symbol: 'kr', html: '&#107;&#114;' } }
+      SEK: { name: 'Krona', symbol: 'kr', html: '&#107;&#114;' }
+    }.freeze
   end
 end

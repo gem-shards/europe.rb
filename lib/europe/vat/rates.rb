@@ -1,20 +1,14 @@
-require 'net/http'
-require 'uri'
-require 'nokogiri'
-
 module Europe
   module Vat
     # Rates
     module Rates
       RATES_URL = 'http://ec.europa.eu/taxation_customs/tic/' \
-                  'public/vatRates/vatratesSearch.html'
+                  'public/vatRates/vatratesSearch.html'.freeze
       def self.retrieve
         resp = fetch_rates
         return resp if resp == :failed
         extract_rates(resp)
       end
-
-      private
 
       def self.extract_country_code(data)
         Europe::Countries::Reversed.generate(:name) \
@@ -40,7 +34,7 @@ module Europe
         params = 'listOfTypes=Standard&dateFilter=' +
                  Time.new.strftime('%d/%m/%Y')
         [*1..Europe::Countries::COUNTRIES.count].each do |index|
-          params += '&listOfMsa=' + (index).to_s
+          params += '&listOfMsa=' + index.to_s
         end
         [uri, params]
       end

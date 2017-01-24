@@ -139,7 +139,7 @@ Response
 ```
 
 ## Retrieving country information reversed
-Call with optional parameters (name, currency, source_name, official_name, tld, currency and capital) 
+Call with optional parameters (name, currency, source_name, official_name, tld, currency and capital)
 ```ruby
 Europe::Countries::Reversed.generate('name')
 ```
@@ -158,7 +158,7 @@ Response
 
 This gem is tested with the following Ruby versions on Linux and Mac OS X:
 
-- Ruby MRI 1.9.3, 2.0.0, 2.1.8, 2.2.0, 2.2.3, 2.2.4
+- Ruby > 2.2.2
 
 ## Todo
 

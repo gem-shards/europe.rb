@@ -7,8 +7,8 @@ module Europe
   # VAT
   module Vat
     WSDL = 'http://ec.europa.eu/taxation_customs/' \
-           'vies/checkVatService.wsdl'
-    NS = 'urn:ec.europa.eu:taxud:vies:services:checkVat:types'
+           'vies/checkVatService.wsdl'.freeze
+    NS = 'urn:ec.europa.eu:taxud:vies:services:checkVat:types'.freeze
     def self.validate(number)
       response = send_request(number[0..1], number[2..-1])
       return :failed unless response.success?
@@ -28,8 +28,6 @@ module Europe
           .keys.include?(number[0..1].to_sym)
       end
     end
-
-    private
 
     def self.send_request(country_code, number)
       client = Savon.client(wsdl: WSDL, namespace: NS,
