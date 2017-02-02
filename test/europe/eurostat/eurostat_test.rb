@@ -9,7 +9,7 @@ module Europe
       include Benchmark
 
       def test_eurostat_retrieval
-        p Europe::Eurostat.retrieve('nama_gdp_c','')
+        p Europe::Eurostat.retrieve('nama_gdp_c', '')
       end
     end
   end
