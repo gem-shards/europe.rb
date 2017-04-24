@@ -43,7 +43,7 @@ module Europe
       end
 
       def self.sanitize_number(number, country_code)
-        if [:GB, :DK, :FR].include?(country_code)
+        if %i[GB DK FR].include?(country_code)
           number.gsub(/\.|\t/, '').upcase
         else
           number.gsub(/\.|\t|\s/, '').upcase

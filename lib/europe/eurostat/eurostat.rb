@@ -22,8 +22,8 @@ module Europe
         indic_na: 'B1GM', unitLabel: 'code'
       }
       uri.query = URI.encode_www_form(params)
-      p URI.encode_www_form(params)
-      p uri.to_s
+      # p URI.encode_www_form(params)
+      # p uri.to_s
       uri
     end
 

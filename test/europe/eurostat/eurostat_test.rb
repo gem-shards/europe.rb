@@ -1,5 +1,6 @@
 #!/bin/env ruby
 # encoding: utf-8
+
 require 'test_helper'
 
 module Europe
@@ -9,7 +10,7 @@ module Europe
       include Benchmark
 
       def test_eurostat_retrieval
-        p Europe::Eurostat.retrieve('nama_gdp_c', '')
+        Europe::Eurostat.retrieve('nama_gdp_c', '')
       end
     end
   end

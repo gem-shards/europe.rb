@@ -19,17 +19,17 @@ module Europe
         # PostNL
         validate_correct_vat = Europe::Vat.validate('NL009291477B01')
         assert validate_correct_vat[:valid] \
-          unless [:timeout, :failed].include?(validate_correct_vat)
+          unless %i[timeout failed].include?(validate_correct_vat)
 
         # Sky
         validate_correct_vat = Europe::Vat.validate('GB440627467')
         assert validate_correct_vat[:valid] \
-          unless [:timeout, :failed].include?(validate_correct_vat)
+          unless %i[timeout failed].include?(validate_correct_vat)
 
         # Volkswagen
         validate_correct_vat = Europe::Vat.validate('DE115235681')
         assert validate_correct_vat[:valid] \
-          unless [:timeout, :failed].include?(validate_correct_vat)
+          unless %i[timeout failed].include?(validate_correct_vat)
       end
 
       def test_failed_request_to_soap_service
