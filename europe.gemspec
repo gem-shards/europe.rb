@@ -22,7 +22,6 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ['lib']
 
-  spec.required_ruby_version = ">= 2.2"
   spec.add_dependency 'nokogiri'
   spec.add_dependency 'savon'
 
@@ -33,6 +32,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'awesome_print'
   spec.add_development_dependency 'pry'
   spec.add_development_dependency 'rubocop'
-  spec.add_development_dependency 'simplecov'
   spec.add_development_dependency 'webmock'
 end

@@ -41,7 +41,7 @@ module Europe
       }.freeze
 
       def test_all_vat_numbers_on_format
-        VAT_FORMAT_VALIDATION.each do |_country, number|
+        VAT_FORMAT_VALIDATION.each_value do |number|
           if number.is_a?(Array)
             number.each do |num|
               check_vat_number(num)

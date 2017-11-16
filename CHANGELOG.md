@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+# 0.0.7
+  - Fixed currencies for Estonia, Lithuania and Sweden
+  - Added eurozone call to Countries which returns all countries with EUR currency
+  - Removed simplecov because of Gem errors
+  - Updated dependencies and fixed rubocop syntax errors
+
 ## 0.0.6
   - Added Changelog
   - Fixed test case for VAT validation where EU VIES services times out

@@ -1,6 +1,3 @@
-#!/bin/env ruby
-# encoding: utf-8
-
 # Source: http://publications.europa.eu/code/pdf/370000en.htm
 
 require 'europe/countries/reversed'
@@ -27,7 +24,7 @@ module Europe
             tld: '.de', currency: :EUR, capital: 'Berlin' },
       EE: { name: 'Estonia', source_name: 'Eesti',
             official_name: 'Republic of Estonia',
-            tld: '.ee', currency: :EUR, capital: 'Tallinn' },
+            tld: '.ee', currency: :EEK, capital: 'Tallinn' },
       IE: { name: 'Ireland', source_name: 'Éire',
             official_name: 'Ireland',
             tld: '.ie', currency: :EUR, capital: 'Dublin' },
@@ -54,7 +51,7 @@ module Europe
             tld: '.lv', currency: :EUR, capital: 'Riga' },
       LT: { name: 'Lithuania', source_name: 'Lietuva',
             official_name: 'Republic of Lithuania',
-            tld: '.lt', currency: :EUR, capital: 'Vilnius' },
+            tld: '.lt', currency: :LTL, capital: 'Vilnius' },
       LU: { name: 'Luxembourg', source_name: 'Luxembourg',
             official_name: 'Grand Duchy of Luxembourg',
             tld: '.lu', currency: :EUR, capital: 'Luxembourg City' },
@@ -90,11 +87,15 @@ module Europe
             tld: '.fi', currency: :EUR, capital: 'Helsinki' },
       SE: { name: 'Sweden', source_name: 'Sverige',
             official_name: 'Kingdom of Sweden',
-            tld: '.se', currency: :EUR, capital: 'Stockholm' },
+            tld: '.se', currency: :SEK, capital: 'Stockholm' },
       UK: { name: 'United Kingdom', source_name: 'United Kingdom',
             official_name: 'United Kingdom of Great ' \
                            'Britain and Northern Ireland',
             tld: '.uk', currency: :GBP, capital: 'London' }
     }.freeze
+
+    def self.eurozone
+      Reversed.generate(:currency)[:EUR]
+    end
   end
 end

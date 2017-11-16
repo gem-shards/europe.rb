@@ -1,6 +1,4 @@
 #!/bin/env ruby
-# encoding: utf-8
-
 # Source: Wikipedia
 require 'europe/currency/exchange_rates'
 
