@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+# 0.0.8
+  - Changed URL for retrieving VAT rates. The old one was no longer valid
+  - Skipped Eurostat tests as URL changed. Eurostat use is still expirimental
+
 # 0.0.7
   - Fixed currencies for Estonia, Lithuania and Sweden
   - Added eurozone call to Countries which returns all countries with EUR currency
