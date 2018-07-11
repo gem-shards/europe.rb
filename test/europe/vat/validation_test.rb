@@ -34,11 +34,10 @@ module Europe
 
       def test_failed_request_to_soap_service
         WebMock.enable!
-        stub_request(:any, 'http://ec.europa.eu/taxation_customs' \
-                           '/vies/checkVatService.wsdl').to_timeout
+        stub_request(:any, 'http://ec.europa.eu/taxation_customs/vies/services/checkVatService').to_timeout
         Europe::Vat.validate('DE115235681')
 
-        stub_request(:get, 'http://ec.europa.eu/taxation_customs/vies/checkVatService.wsdl')
+        stub_request(:get, 'http://ec.europa.eu/taxation_customs/vies/services/checkVatService')
           .with(headers: { 'Accept' => '*/*', 'User-Agent' => 'Ruby' })
           .to_return(status: 421, body: '')
         Europe::Vat.validate('DE115235681')
