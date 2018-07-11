@@ -1,5 +1,5 @@
-require 'open-uri'
-require 'nokogiri'
+require 'rexml/document'
+require 'net/http'
 
 # Europe Gem
 module Europe
@@ -10,15 +10,24 @@ module Europe
       EXCHANGE_URL = 'http://www.ecb.europa.eu/stats/' \
                      'eurofxref/eurofxref-daily.xml'.freeze
       def self.retrieve
-        extract_rates(Nokogiri::XML(open(EXCHANGE_URL)))
+        resp = Net::HTTP.get_response(URI.parse(EXCHANGE_URL))
+        resp.code.to_i == 200 ? extract_rates(resp.body) : :failed
       end
 
       def self.extract_rates(doc)
-        rates = { date: Date.parse(doc.css('Cube Cube').first['time']),
+        xml = REXML::Document.new(doc)
+        cubes = xml.elements.first.elements[3].elements[1]
+
+        rates = { date: Date.parse(cubes.attributes['time']),
                   rates: {} }
-        doc.css('Cube Cube Cube').each do |rate|
-          rates[:rates][rate.xpath('@currency').text.to_sym] =
-            rate.xpath('@rate').text.to_f
+
+        filter_rates(cubes, rates)
+      end
+
+      def self.filter_rates(cubes, rates)
+        cubes.elements.each('Cube') do |cube|
+          rates[:rates][cube.attributes['currency'].to_sym] =
+            cube.attributes['rate'].to_f
         end
         rates
       end

@@ -12,11 +12,20 @@ module Europe
 
       def self.extract_rates(resp)
         rates = {}
-        doc = Nokogiri::XML(resp)
-        doc.css('body tbody tr')[2..-1].each do |data|
-          key = data.css('td').children[1].text.to_sym
-          rates[key] = data.css('td').children[2].text.to_f
+
+        data = resp.scan(%r{\<tbody\>(.*)\<\/tbody\>}m).first.first.strip
+        xml = REXML::Document.new("<root>#{data}</root>")
+        xml.first.elements.each('tr') do |result|
+          next if result[3].nil?
+          rates = filter_rate(result, rates)
         end
+        rates
+      end
+
+      def self.filter_rate(result, rates)
+        country = result[3].text
+        rate = result[5].text
+        rates[country.to_sym] = rate.to_f if country
         rates
       end
 
