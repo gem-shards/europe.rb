@@ -8,7 +8,7 @@ This gem provides EU governmental data, extracted from various EU / EC websites.
 - [Usage](#usage)
   - [Validating VAT numbers](#validating-vat-numbers)
   - [Validate VAT number format](#validate-vat-number-format)
-  - [Validate Postal code format] (#validate-postal-code-format)
+  - [Validate Postal code format](#validate-postal-code-format)
   - [Retrieving VAT rates for each EC/EU member](#retrieving-vat-rates-for-each-eceu-member)
   - [Retrieving currency exchange rates](#retrieving-currency-exchange-rates)
   - [Retrieving currency information](#retrieving-currency-information)
