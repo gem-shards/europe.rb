@@ -2,6 +2,11 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+# 0.0.9
+  - Removed all external depdencies, only Ruby's standard library is used
+  - Added Postal code format validator
+  - Used different source for exchange rates which returns more currencies
+
 # 0.0.8
   - Changed URL for retrieving VAT rates. The old one was no longer valid
   - Skipped Eurostat tests as URL changed. Eurostat use is still expirimental
