@@ -2,6 +2,8 @@ require 'europe/vat/rates'
 require 'europe/vat/format'
 require 'uri'
 require 'net/http'
+require 'rexml/document'
+require 'date'
 
 # Europe Gem
 module Europe
@@ -39,18 +41,24 @@ module Europe
     end
 
     def self.setup_response(response)
+      body = response_xml(response)
       {
-        valid: extract_data('valid', response.body) == 'true',
-        country_code: extract_data('countryCode', response.body),
-        vat_number: extract_data('vatNumber', response.body),
-        request_date: extract_data('requestDate', response.body),
-        name: extract_data('name', response.body),
-        address: extract_data('address', response.body)
+        valid: extract_data(body, 4) == 'true',
+        country_code: extract_data(body, 1),
+        vat_number: extract_data(body, 2),
+        request_date: Date.parse(extract_data(body, 3)),
+        name: extract_data(body, 5),
+        address: extract_data(body, 6)
       }
     end
 
-    def self.extract_data(key, body)
-      %r{<#{key}>(.*)<\/#{key}>}.match(body).to_a.last
+    def self.response_xml(response)
+      xml = REXML::Document.new(response.body)
+      xml.first.elements.first.elements.first.elements
+    end
+
+    def self.extract_data(body, position)
+      body[position].text
     end
 
     def self.charge_vat?(origin_country, number)
