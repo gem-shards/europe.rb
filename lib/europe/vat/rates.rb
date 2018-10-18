@@ -4,8 +4,8 @@ module Europe
   module Vat
     # Rates
     module Rates
-      RATES_URL = 'https://europa.eu/youreurope/business/' \
-                  'vat-customs/buy-sell/vat-rates/index_en.htm'.freeze
+      RATES_URL = 'https://europa.eu/youreurope/business/taxation/' \
+                  'vat/vat-rules-rates/index_en.htm'.freeze
       def self.retrieve
         resp = fetch_rates
         return resp if resp == :failed
@@ -33,6 +33,7 @@ module Europe
 
       def self.fetch_rates
         resp = Net::HTTP.get_response(URI.parse(RATES_URL))
+        p resp
         resp.code.to_i == 200 ? resp.body : :failed
       end
     end
