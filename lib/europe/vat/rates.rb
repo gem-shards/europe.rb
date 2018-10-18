@@ -33,7 +33,6 @@ module Europe
 
       def self.fetch_rates
         resp = Net::HTTP.get_response(URI.parse(RATES_URL))
-        p resp
         resp.code.to_i == 200 ? resp.body : :failed
       end
     end
