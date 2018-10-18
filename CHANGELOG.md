@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 0.0.11
+  - Removed print outout when fetching VAT rates
+  - [Full Changelog](https://github.com/VvanGemert/europe/compare/v0.0.10...v0.0.11)
+
 ## 0.0.10
   - Changed URL for retrieving VAT rates because it was modified and redirected
   - [Full Changelog](https://github.com/VvanGemert/europe/compare/v0.0.9...v0.0.10)
