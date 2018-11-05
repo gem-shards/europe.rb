@@ -58,7 +58,7 @@ module Europe
     end
 
     def self.extract_data(body, position)
-      body[position].text
+      body[position]&.text
     end
 
     def self.charge_vat?(origin_country, number)
