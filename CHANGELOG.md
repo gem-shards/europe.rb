@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 0.0.12
+  - Fixed extracting vat validation data when it didn't exists
+  - [Full Changelog](https://github.com/VvanGemert/europe/compare/v0.0.11...v0.0.12)
+
 ## 0.0.11
   - Removed print outout when fetching VAT rates
   - [Full Changelog](https://github.com/VvanGemert/europe/compare/v0.0.10...v0.0.11)
