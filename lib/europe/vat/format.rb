@@ -38,7 +38,8 @@ module Europe
       def self.validate(number)
         country_code = number[0..1].to_sym
         number = sanitize_number(number, country_code)
-        return false unless VAT_REGEX.keys.include?(country_code)
+        return false unless VAT_REGEX.key?(country_code)
+
         match_vat_number(number, country_code)
       end
 

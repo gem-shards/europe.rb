@@ -9,6 +9,7 @@ module Europe
       def self.retrieve
         resp = fetch_rates
         return resp if resp == :failed
+
         extract_rates(resp)
       end
 
@@ -19,6 +20,7 @@ module Europe
         xml = REXML::Document.new("<root>#{data}</root>")
         xml.first.elements.each('tr') do |result|
           next if result[3].nil?
+
           rates = filter_rate(result, rates)
         end
         rates

@@ -7,8 +7,11 @@ namespace :eurostat do
 
   desc 'Download categories from Eurostat Bulk Facility'
   task :download_categories do
+    data = Net::HTTP.get_response(
+      URI.parse(EUROSTAT_BULK_URL + 'table_of_contents_en.txt')
+    ).body
     File.open('cat.txt', 'w') do |f|
-      IO.copy_stream(open(EUROSTAT_BULK_URL + 'table_of_contents_en.txt'), f)
+      IO.copy_stream(data, f)
     end
   end
 end

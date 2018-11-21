@@ -12,7 +12,7 @@ module Europe
 
       def test_retrieval_exchange_rates
         rates = Europe::Currency::ExchangeRates.retrieve
-        assert rates[:rates].keys.include?(:GBP)
+        assert rates[:rates].key?(:GBP)
       end
     end
   end

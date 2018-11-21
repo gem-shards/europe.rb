@@ -36,7 +36,8 @@ module Europe
     # rubocop:enable LineLength
 
     def self.validate(country_code, postal_code)
-      return false unless POSTAL_REGEX.keys.include?(country_code.to_sym)
+      return false unless POSTAL_REGEX.key?(country_code.to_sym)
+
       match_postal_code(postal_code, country_code)
     end
 
