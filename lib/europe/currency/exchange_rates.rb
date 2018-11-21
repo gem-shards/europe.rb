@@ -1,4 +1,3 @@
-require 'rexml/document'
 require 'net/http'
 require 'date'
 
@@ -8,7 +7,7 @@ module Europe
   module Currency
     # exchange rates
     module ExchangeRates
-      EXCHANGE_URL = 'https://www.floatrates.com/daily/eur.xml'.freeze
+      EXCHANGE_URL = 'https://www.floatrates.com/daily/eur.json'.freeze
 
       def self.retrieve
         resp = Net::HTTP.get_response(URI.parse(EXCHANGE_URL))
@@ -16,17 +15,17 @@ module Europe
       end
 
       def self.extract_rates(doc)
-        xml = REXML::Document.new(doc)
+        data = JSON.parse(doc)
 
-        rates = { date: Date.parse(xml.elements.first.elements[7].text),
+        rates = { date: Date.parse(data['usd']['date']),
                   rates: {} }
 
-        filter_rates(xml, rates)
+        filter_rates(data, rates)
       end
 
-      def self.filter_rates(xml, rates)
-        xml.elements.each('channel/item') do |item|
-          rates[:rates][item[13].text.to_sym] = item[17].text.delete(',').to_f
+      def self.filter_rates(data, rates)
+        data.each do |currency, object|
+          rates[:rates][currency.upcase.to_sym] = object['rate'].to_f
         end
         rates
       end
