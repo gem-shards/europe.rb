@@ -33,11 +33,13 @@ module Europe
     def self.validate(number)
       response = send_request(number[0..1], number[2..-1])
       return :failed unless response.is_a? Net::HTTPSuccess
+      return :failed if response.body.include?('soap:Fault')
+
       setup_response(response)
     rescue Net::OpenTimeout
-      return :timeout
+      :timeout
     rescue Net::HTTPServerError
-      return :server_error
+      :server_error
     end
 
     def self.setup_response(response)
@@ -46,7 +48,7 @@ module Europe
         valid: extract_data(body, 4) == 'true',
         country_code: extract_data(body, 1),
         vat_number: extract_data(body, 2),
-        request_date: Date.parse(extract_data(body, 3)),
+        request_date: convert_date(extract_data(body, 3)),
         name: extract_data(body, 5),
         address: extract_data(body, 6)
       }
@@ -57,17 +59,24 @@ module Europe
       xml.first.elements.first.elements.first.elements
     end
 
+    def self.convert_date(date)
+      return unless date
+
+      Date.parse(date)
+    end
+
     def self.extract_data(body, position)
       body[position].text if body[position]
     end
 
     def self.charge_vat?(origin_country, number)
       return false if number.nil? || number.empty?
+
       if origin_country.to_sym == number[0..1].to_sym
         true
       else
         Europe::Countries::COUNTRIES
-          .keys.include?(number[0..1].to_sym)
+          .key?(number[0..1].to_sym)
       end
     end
 
