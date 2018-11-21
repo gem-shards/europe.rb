@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 0.0.13
+  - Fixed rubocop syntax issues
+  - Changed ExchangeRate source from XML to JSON
+  - Fixed date parsing and soap:fault handling in VAT validation
+  - [Full Changelog](https://github.com/VvanGemert/europe/compare/v0.0.12...v0.0.13)
+
 ## 0.0.12
   - Fixed extracting vat validation data when it didn't exists
   - [Full Changelog](https://github.com/VvanGemert/europe/compare/v0.0.11...v0.0.12)
