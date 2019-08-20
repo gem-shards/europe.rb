@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Source: http://publications.europa.eu/code/pdf/370000en.htm
 
 require 'europe/countries/reversed'

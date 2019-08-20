@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'europe/vat/rates'
 require 'europe/vat/format'
 require 'uri'
@@ -10,13 +12,13 @@ module Europe
   # VAT
   module Vat
     WSDL = 'http://ec.europa.eu/taxation_customs/vies/' \
-           'services/checkVatService'.freeze
+           'services/checkVatService'
     HEADERS = {
       'Content-Type' => 'text/xml;charset=UTF-8',
       'SOAPAction' => ''
     }.freeze
 
-    BODY = <<-XML.freeze
+    BODY = <<-XML
       <soapenv:Envelope
       xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
       xmlns:urn="urn:ec.europa.eu:taxud:vies:services:checkVat:types">
@@ -66,7 +68,7 @@ module Europe
     end
 
     def self.extract_data(body, position)
-      body[position].text if body[position]
+      body[position]&.text
     end
 
     def self.charge_vat?(origin_country, number)

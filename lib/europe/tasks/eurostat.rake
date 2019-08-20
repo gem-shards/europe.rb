@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'open-uri'
 
 namespace :eurostat do
   EUROSTAT_BULK_URL = 'http://ec.europa.eu/eurostat/' \
                       'estat-navtree-portlet-prod/BulkDownloadListing' \
-                      '?sort=1&file='.freeze
+                      '?sort=1&file='
 
   desc 'Download categories from Eurostat Bulk Facility'
   task :download_categories do

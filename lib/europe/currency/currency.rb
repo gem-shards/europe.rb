@@ -1,4 +1,6 @@
 #!/bin/env ruby
+# frozen_string_literal: true
+
 # Source: Wikipedia
 require 'europe/currency/exchange_rates'
 

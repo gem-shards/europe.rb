@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Europe Gem
 module Europe
   # VAT

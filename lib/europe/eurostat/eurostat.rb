@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'net/http'
 require 'uri'
 require 'json'
@@ -8,7 +10,7 @@ module Europe
   module Eurostat
     # http://ec.europa.eu/eurostat/data/database
     STAT_URL = 'http://ec.europa.eu/eurostat/wdds' \
-               '/rest/data/v2.1/json/en/'.freeze
+               '/rest/data/v2.1/json/en/'
 
     def self.retrieve(dataset, filters)
       fetch_stats(dataset, filters)

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'net/http'
 require 'date'
 
@@ -7,7 +9,7 @@ module Europe
   module Currency
     # exchange rates
     module ExchangeRates
-      EXCHANGE_URL = 'https://www.floatrates.com/daily/eur.json'.freeze
+      EXCHANGE_URL = 'https://www.floatrates.com/daily/eur.json'
 
       def self.retrieve
         resp = Net::HTTP.get_response(URI.parse(EXCHANGE_URL))
@@ -21,6 +23,8 @@ module Europe
                   rates: {} }
 
         filter_rates(data, rates)
+      rescue JSON::ParserError
+        :failed
       end
 
       def self.filter_rates(data, rates)

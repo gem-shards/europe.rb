@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'europe/version'
 require 'europe/countries/countries'
 require 'europe/currency/currency'

@@ -2,6 +2,11 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 0.0.14
+  - Fixed rubocop syntax issues
+  - Fixed issue with retrieving exchange rates when no valid JSON is returned
+  - [Full Changelog](https://github.com/VvanGemert/europe/compare/v0.0.13...v0.0.14)
+
 ## 0.0.13
   - Fixed rubocop syntax issues
   - Changed ExchangeRate source from XML to JSON
