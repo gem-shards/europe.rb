@@ -8,6 +8,7 @@ module Europe
     module Rates
       RATES_URL = 'https://europa.eu/youreurope/business/taxation/' \
                   'vat/vat-rules-rates/index_en.htm'
+
       def self.retrieve
         resp = fetch_rates
         return resp if resp == :failed
