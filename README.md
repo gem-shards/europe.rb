@@ -1,5 +1,5 @@
 ![Europe gem logo](https://s3-eu-west-1.amazonaws.com/valorsis.s3-website-eu-west-1.amazonaws.com/static/logo256.png)
-# Europe
+# Europe :eu:
 
 This gem provides EU governmental data, extracted from various EU / EC websites. With this gem you can validate VAT numbers, retrieve VAT tax rates and currency exchange rates matched to the Euro. How to use this gem is pretty straightforward and written below.
 
@@ -179,7 +179,7 @@ This gem is tested with the following Ruby versions on Linux and Mac OS X:
 
 ## Contributing
 
-1. Fork it ( https://github.com/VvanGemert/europe/fork )
+1. Fork it ( https://github.com/gem-shards/europe.rb/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)

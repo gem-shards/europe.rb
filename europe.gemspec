@@ -6,15 +6,15 @@ require 'europe/version'
 Gem::Specification.new do |spec|
   spec.name          = 'europe'
   spec.version       = Europe::VERSION
-  spec.authors       = ['VvanGemert']
-  spec.email         = ['vincent@floorplanner.com']
+  spec.authors       = ['Gem shards']
+  spec.email         = ['vincent@gemshards.com']
   spec.summary       = 'Europe is a gem for retrieving and validating ' \
                        'EU government data.'
   spec.description   = 'Europe is a simple library for retrieving ' \
                        'EU government data such as VAT information, ' \
                        'VAT validation, currency exchange rates and ' \
                        'country information.'
-  spec.homepage      = 'https://github.com/VvanGemert/europe'
+  spec.homepage      = 'https://github.com/gem-shards/europe.rb'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`.split("\x0")
