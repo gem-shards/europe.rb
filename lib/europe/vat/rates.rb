@@ -6,8 +6,9 @@ module Europe
   module Vat
     # Rates
     module Rates
-      RATES_URL = 'https://europa.eu/youreurope/business/taxation/' \
-                  'vat/vat-rules-rates/index_en.htm'
+      RATES_URL = 'https://ec.europa.eu/taxation_customs/' \
+                  'business/vat/telecommunications-broadcasting' \
+                  '-electronic-services/vat-rates_en'
 
       def self.retrieve
         resp = fetch_rates
@@ -30,9 +31,10 @@ module Europe
       end
 
       def self.filter_rate(result, rates)
-        country = result[3].text
-        rate = result[5].text
-        rates[country.to_sym] = rate.to_f if country
+        country = result[0].text
+        rate = result[3].text
+        country_code = Europe::Countries::Reversed.generate(:name)[country]
+        rates[country_code] = rate.to_f if country_code
         rates
       end
 

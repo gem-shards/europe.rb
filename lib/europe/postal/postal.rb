@@ -4,7 +4,7 @@
 module Europe
   # VAT
   module Postal
-    # rubocop:disable LineLength
+    # rubocop:disable Layout/LineLength
     POSTAL_REGEX = {
       AT: /^\d{4}$/,
       BE: /^\d{4}$/,
@@ -35,7 +35,7 @@ module Europe
       SI: /^\d{4}$/,
       SK: /^\d{3}[ ]?\d{2}$/
     }.freeze
-    # rubocop:enable LineLength
+    # rubocop:enable Layout/LineLength
 
     def self.validate(country_code, postal_code)
       return false unless POSTAL_REGEX.key?(country_code.to_sym)

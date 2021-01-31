@@ -2,6 +2,16 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 0.0.16
+  - Changed Slovak Republic to Slovakia in country names
+  - Updated outdated endpoint for VAT rates, thanks to @firstpromoter
+  - Fixed a couple of rubocop issues
+  - [Full Changelog](https://github.com/VvanGemert/europe/compare/v0.0.15...v0.0.16)
+## 0.0.15
+  - Checked library on Ruby 2.7
+  - Moved repository to gem-shards
+  - [Full Changelog](https://github.com/VvanGemert/europe/compare/v0.0.14...v0.0.15)
+
 ## 0.0.14
   - Fixed rubocop syntax issues
   - Fixed issue with retrieving exchange rates when no valid JSON is returned

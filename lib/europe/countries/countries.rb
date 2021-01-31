@@ -81,7 +81,7 @@ module Europe
       SI: { name: 'Slovenia', source_name: 'Slovenija',
             official_name: 'Republic of Slovenia',
             tld: '.si', currency: :EUR, capital: 'Ljubljana' },
-      SK: { name: 'Slovak Republic', source_name: 'Slovensko',
+      SK: { name: 'Slovakia', source_name: 'Slovensko',
             official_name: 'Slovak Republic',
             tld: '.sk', currency: :EUR, capital: 'Bratislava' },
       FI: { name: 'Finland', source_name: 'Suomi',
