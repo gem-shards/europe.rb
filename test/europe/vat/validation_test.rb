@@ -23,11 +23,6 @@ module Europe
         assert validate_correct_vat[:valid] \
           unless %i[timeout failed].include?(validate_correct_vat)
 
-        # Sky
-        validate_correct_vat = Europe::Vat.validate('GB440627467')
-        assert validate_correct_vat[:valid] \
-          unless %i[timeout failed].include?(validate_correct_vat)
-
         # Volkswagen
         validate_correct_vat = Europe::Vat.validate('DE115235681')
         assert validate_correct_vat[:valid] \

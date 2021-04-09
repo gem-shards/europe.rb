@@ -43,16 +43,16 @@ where this gem can be used for.
 ** Updated: Parameter now consists of one value.**
 Call to validate VAT number (always starts with country code as specified in VIES)
 ```ruby
-Europe::Vat.validate('GB440627467')
+Europe::Vat.validate('NL009291477B01')
 ```
 Response
 ```ruby
-{ :country_code=>"GB",
-  :vat_number=>"440627467",
-  :request_date=>#<Date: 2015-12-15 ((2457372j,0s,0n),+0s,2299161j)>,
-  :valid=>true,
-  :name=>"SKY PLC",
-  :address=>"6 CENTAURS BUSINESS PARK\nGRANT WAY\nISLEWORTH\nMIDDLESEX\n\nTW7 5QD" }
+{ :country_code => "NL",
+  :vat_number => "009291477B01",
+  :request_date => #<Date: 2015-12-15 ((2457372j,0s,0n),+0s,2299161j)>,
+  :valid => true,
+  :name => "KONINKLIJKE POSTNL B.V.",
+  :address => nil }
 ```
 
 ### Validate VAT number format

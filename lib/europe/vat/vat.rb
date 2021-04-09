@@ -74,12 +74,8 @@ module Europe
     def self.charge_vat?(origin_country, number)
       return false if number.nil? || number.empty?
 
-      if origin_country.to_sym == number[0..1].to_sym
-        true
-      else
-        Europe::Countries::COUNTRIES
-          .key?(number[0..1].to_sym)
-      end
+      Europe::Vat::Fromat::VAT_REGEX.key?(origin_country.to_sym) ||
+        Europe::Vat::Fromat::VAT_REGEX.key?(number[0..1].to_sym)
     end
 
     def self.send_request(country_code, number)
