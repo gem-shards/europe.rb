@@ -15,6 +15,9 @@ Gem::Specification.new do |spec|
                        'VAT validation, currency exchange rates and ' \
                        'country information.'
   spec.homepage      = 'https://github.com/gem-shards/europe.rb'
+  spec.metadata    = {
+    'source_code_uri' => 'https://github.com/gem-shards/europe.rb',
+    'changelog_uri' => 'https://github.com/gem-shards/europe.rb/blob/master/CHANGELOG.md' }
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`.split("\x0")
