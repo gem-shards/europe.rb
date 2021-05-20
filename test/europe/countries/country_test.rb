@@ -16,7 +16,7 @@ module Europe
 
         reversed_hash =
           Europe::Countries::Reversed.generate(:currency)
-        assert_equal reversed_hash[:EUR].count, 17
+        assert_equal reversed_hash[:EUR].count, 19
       end
 
       def test_eurozone
