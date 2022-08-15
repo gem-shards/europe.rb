@@ -47,18 +47,18 @@ module Europe
     def self.setup_response(response)
       body = response_xml(response)
       {
-        valid: extract_data(body, 4) == 'true',
-        country_code: extract_data(body, 1),
-        vat_number: extract_data(body, 2),
-        request_date: convert_date(extract_data(body, 3)),
-        name: extract_data(body, 5),
-        address: extract_data(body, 6)
+        valid: extract_data(body, 3) == 'true',
+        country_code: extract_data(body, 0),
+        vat_number: extract_data(body, 1),
+        request_date: convert_date(extract_data(body, 2)),
+        name: extract_data(body, 4),
+        address: extract_data(body, 5)
       }
     end
 
     def self.response_xml(response)
       xml = REXML::Document.new(response.body)
-      xml.first.elements.first.elements.first.elements
+      xml.elements.first.elements[2].elements[1]
     end
 
     def self.convert_date(date)

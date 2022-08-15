@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
+## 0.0.19
+  - Fixed VAT validation call because XML response was updated
+  - [Full Changelog](https://github.com/gem-shards/europe.rb/compare/v0.0.18...v0.0.19)
 ## 0.0.18
   - Added Estonia and Lithuania to eurozone
   - [Full Changelog](https://github.com/gem-shards/europe.rb/compare/v0.0.17...v0.0.18)
