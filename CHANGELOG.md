@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
+## 0.0.20
+  - Added fallback VAT rates in case the EU website is down or unresponsive
+  - [Full Changelog](https://github.com/gem-shards/europe.rb/compare/v0.0.19...v0.0.20)
 ## 0.0.19
   - Fixed VAT validation call because XML response was updated
   - [Full Changelog](https://github.com/gem-shards/europe.rb/compare/v0.0.18...v0.0.19)
