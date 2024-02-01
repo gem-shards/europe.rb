@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
+## 0.0.21
+  - Added check to fail short VAT numbers under 5 characters
+  - [Full Changelog](https://github.com/gem-shards/europe.rb/compare/v0.0.20...v0.0.21)
 ## 0.0.20
   - Added fallback VAT rates in case the EU website is down or unresponsive
   - [Full Changelog](https://github.com/gem-shards/europe.rb/compare/v0.0.19...v0.0.20)

@@ -12,6 +12,10 @@ module Europe
         WebMock.disable!
       end
 
+      def test_validation_of_short_vat_number
+        assert_equal :failed, Europe::Vat.validate('6')
+      end
+
       def test_validation_of_false_vat_number
         validate_false_vat = Europe::Vat.validate('NL123456789B01')
         assert_equal false, validate_false_vat[:valid]

@@ -33,6 +33,8 @@ module Europe
     XML
 
     def self.validate(number)
+      return :failed if number.size < 4
+
       response = send_request(number[0..1], number[2..-1])
       return :failed unless response.is_a? Net::HTTPSuccess
       return :failed if response.body.include?('soap:Fault')

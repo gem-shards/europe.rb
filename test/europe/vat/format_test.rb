@@ -62,15 +62,15 @@ module Europe
       def check_character_and_digit(number)
         assert_equal true, Europe::Vat::Format.validate(
           number[0..1] +
-          number[2..-1].gsub(/X/, [*('A'..'Z'), *('0'..'9')].sample)
+          number[2..-1].gsub('X', [*('A'..'Z'), *('0'..'9')].sample)
         )
       end
 
       def check_integer(number)
         {
-          number[0..1] + number[2..-1].gsub(/9/, [*('0'..'9')].sample) => true,
-          number.gsub(/9/, rand(10).to_s) => true,
-          number.gsub(/9/, [*('A'..'Z')].sample(1).join) => false
+          number[0..1] + number[2..-1].gsub('9', [*('0'..'9')].sample) => true,
+          number.gsub('9', rand(10).to_s) => true,
+          number.gsub('9', [*('A'..'Z')].sample(1).join) => false
         }.each do |key, value|
           assert_equal value, Europe::Vat::Format.validate(key)
         end
@@ -78,10 +78,10 @@ module Europe
 
       def check_alphanumeric(number)
         assert_equal true, Europe::Vat::Format.validate(
-          number[0..1] + number[2..-1].gsub(/L/, [*('A'..'Z')].sample)
+          number[0..1] + number[2..-1].gsub('L', [*('A'..'Z')].sample)
         )
         assert_equal false, Europe::Vat::Format.validate(
-          number[0..1] + number[2..-1].gsub(/L/, [*('0'..'9')].sample)
+          number[0..1] + number[2..-1].gsub('L', [*('0'..'9')].sample)
         )
       end
 
