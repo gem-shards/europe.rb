@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
+## 0.0.22
+  - Updated Estonia's tax rate to 22%
+  - [Full Changelog](https://github.com/gem-shards/europe.rb/compare/v0.0.21...v0.0.22)
 ## 0.0.21
   - Added check to fail short VAT numbers under 5 characters
   - [Full Changelog](https://github.com/gem-shards/europe.rb/compare/v0.0.20...v0.0.21)
