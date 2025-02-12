@@ -38,6 +38,8 @@ module Europe
       response = send_request(number[0..1], number[2..-1])
       return :failed unless response.is_a? Net::HTTPSuccess
       return :failed if response.body.include?('soap:Fault')
+      return :timeout if response.body.include?('TIMEOUT')
+      return :timeout if response.body.include?('MS_MAX_CONCURRENT_REQ')
 
       setup_response(response)
     rescue Net::OpenTimeout
