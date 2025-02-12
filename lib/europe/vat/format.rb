@@ -8,7 +8,7 @@ module Europe
     module Format
       VAT_REGEX = {
         AT: /^ATU\d{8}$/,
-        BE: /^BE0\d{9}$/,
+        BE: /^BE[0-1]\d{9}$/,
         BG: /^BG(\d{10}|\d{9})$/,
         CY: /^CY\d{8}[A-Z]$/,
         CZ: /^CZ(\d{8}|\d{9}|\d{10})$/,
