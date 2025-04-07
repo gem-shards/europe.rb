@@ -1,6 +1,11 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
+## 0.0.24
+  - Changed source for retrieving VAT rates. (https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm)
+  - Removed UK from VAT rate fallbacks
+  - Updated VAT rates for Slovakia (SK) and Finland (FI)
+  - [Full Changelog](https://github.com/gem-shards/europe.rb/compare/v0.0.23...v0.0.24)
 ## 0.0.23
   - Added support for new Belgium VAT numbers, thank you tim-vandecasteele
   - [Full Changelog](https://github.com/gem-shards/europe.rb/compare/v0.0.22...v0.0.23)

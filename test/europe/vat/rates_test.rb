@@ -15,7 +15,8 @@ module Europe
       def test_retrieval_of_vat_rates
         rates = Europe::Vat::Rates.retrieve
 
-        assert_equal rates.count, Europe::Countries::COUNTRIES.count
+        # Remove UK from VAT rates
+        assert_equal rates.count, (Europe::Countries::COUNTRIES.keys - [:UK]).count
 
         assert rates[:NL]
         assert rates[:DE]
