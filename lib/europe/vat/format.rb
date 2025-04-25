@@ -21,7 +21,7 @@ module Europe
         FR: /^FR[A-Z0-9][A-Z0-9] \d{9}$/,
         HR: /^HR\d{11}$/,
         HU: /^HU\d{8}$/,
-        IE: /^IE\d[A-Z0-9\+\*|\d]\d{5}([A-Z]|WI)$/,
+        IE: /^IE(\d[A-Z]\d{5}[A-Z]|\d{7}[A-Z]{2})$/,
         IT: /^IT\d{11}$/,
         LT: /^LT(\d{9}|\d{12})$/,
         LU: /^LU\d{8}$/,
