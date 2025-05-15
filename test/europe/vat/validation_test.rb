@@ -21,6 +21,10 @@ module Europe
         assert_equal false, validate_false_vat[:valid]
       end
 
+      def test_validation_of_vat_number_with_spaces
+        assert Europe::Vat.validate('DK 474 587 14')
+      end
+
       def test_validation_of_correct_vat_number
         # PostNL
         validate_correct_vat = Europe::Vat.validate('NL009291477B01')

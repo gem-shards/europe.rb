@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
+## 0.0.26
+  - Removed spaces by default for VAT number format validations, as per request from tim-vandecasteele
+  - [Full Changelog](https://github.com/gem-shards/europe.rb/compare/v0.0.25...v0.0.26)
 ## 0.0.25
   - A fix for Ireland's VAT numbers, https://github.com/gem-shards/europe.rb/pull/5, thank you again tim-vandecasteele
   - [Full Changelog](https://github.com/gem-shards/europe.rb/compare/v0.0.24...v0.0.25)

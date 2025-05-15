@@ -50,6 +50,10 @@ module Europe
         end
       end
 
+      def test_vat_number_with_spaces
+        check_vat_number('DK 474 587 14')
+      end
+
       def check_vat_number(number)
         check_true_values(number)
         check_character_and_digit(number) \
