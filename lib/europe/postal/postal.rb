@@ -37,13 +37,17 @@ module Europe
     }.freeze
     # rubocop:enable Layout/LineLength
 
-    def self.validate(country_code, postal_code)
+    def self.valid?(country_code, postal_code)
       return false unless POSTAL_REGEX.key?(country_code.to_sym)
 
-      match_postal_code(postal_code, country_code)
+      match_postal_code?(postal_code, country_code)
     end
 
-    def self.match_postal_code(postal_code, country_code)
+    class << self
+      alias validate valid?
+    end
+
+    def self.match_postal_code?(postal_code, country_code)
       if POSTAL_REGEX[country_code.to_sym].is_a?(Array)
         POSTAL_REGEX[country_code.to_sym].each do |regex|
           return true if regex.match(postal_code)

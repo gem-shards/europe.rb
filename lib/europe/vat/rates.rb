@@ -1,11 +1,14 @@
 # frozen_string_literal: true
 
 require 'rexml/document'
+require 'europe/vat/http_client'
 
 module Europe
   module Vat
     # Rates
     module Rates
+      extend HttpClient
+
       FALLBACK_RATES = {
         AT: 20.0, BE: 21.0, BG: 20.0, CY: 19.0, CZ: 21.0, DE: 19.0, DK: 25.0, EE: 22.0,
         EL: 24.0, ES: 21.0, FI: 25.5, FR: 20.0, HR: 25.0, HU: 27.0, IE: 23.0,
@@ -52,7 +55,10 @@ module Europe
       end
 
       def self.fetch_rates
-        resp = Net::HTTP.get_response(URI.parse(RATES_URL))
+        uri = URI.parse(RATES_URL)
+        http = build_http_client(uri)
+        request = Net::HTTP::Get.new(uri.request_uri)
+        resp = http.request(request)
         resp.code.to_i == 200 ? resp.body : nil
       end
     end
