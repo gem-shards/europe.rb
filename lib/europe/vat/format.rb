@@ -36,26 +36,25 @@ module Europe
         SK: /^SK\d{10}$/
       }.freeze
 
-      def self.validate(number)
+      def self.valid?(number)
         country_code = number[0..1].to_sym
         number = sanitize_number(number)
         return false unless VAT_REGEX.key?(country_code)
 
-        match_vat_number(number, country_code)
+        match_vat_number?(number, country_code)
+      end
+
+      class << self
+        alias validate valid?
       end
 
       def self.sanitize_number(number)
-        number.gsub(/\.|\t|\s/, '').upcase
+        number.delete(".\t\s").upcase
       end
 
-      def self.match_vat_number(number, country_code)
-        if VAT_REGEX[country_code.to_sym].is_a?(Array)
-          VAT_REGEX[country_code.to_sym].each do |regex|
-            return true if regex.match(number)
-          end
-        elsif VAT_REGEX[country_code.to_sym].match(number)
-          return true
-        end
+      def self.match_vat_number?(number, country_code)
+        return true if VAT_REGEX[country_code.to_sym].match(number)
+
         false
       end
     end

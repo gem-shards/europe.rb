@@ -2,6 +2,7 @@
 
 require 'europe/vat/rates'
 require 'europe/vat/format'
+require 'europe/vat/http_client'
 require 'uri'
 require 'net/http'
 require 'rexml/document'
@@ -11,7 +12,9 @@ require 'date'
 module Europe
   # VAT
   module Vat
-    WSDL = 'http://ec.europa.eu/taxation_customs/vies/' \
+    extend HttpClient
+
+    WSDL = 'https://ec.europa.eu/taxation_customs/vies/' \
            'services/checkVatService'
     HEADERS = {
       'Content-Type' => 'text/xml;charset=UTF-8',
@@ -38,14 +41,17 @@ module Europe
       response = send_request(number[0..1], number[2..-1])
       return :failed unless response.is_a? Net::HTTPSuccess
       return :failed if response.body.include?('soap:Fault')
-      return :timeout if response.body.include?('TIMEOUT')
-      return :timeout if response.body.include?('MS_MAX_CONCURRENT_REQ')
+      return :timeout if timeout_response?(response.body)
 
       setup_response(response)
     rescue Net::OpenTimeout
       :timeout
     rescue Net::HTTPServerError
       :server_error
+    end
+
+    def self.timeout_response?(body)
+      body.include?('TIMEOUT') || body.include?('MS_MAX_CONCURRENT_REQ')
     end
 
     def self.setup_response(response)
@@ -78,22 +84,16 @@ module Europe
     def self.charge_vat?(origin_country, number)
       return false if number.nil? || number.empty?
 
-      Europe::Vat::Fromat::VAT_REGEX.key?(origin_country.to_sym) ||
-        Europe::Vat::Fromat::VAT_REGEX.key?(number[0..1].to_sym)
+      Europe::Vat::Format::VAT_REGEX.key?(origin_country.to_sym) ||
+        Europe::Vat::Format::VAT_REGEX.key?(number[0..1].to_sym)
     end
 
     def self.send_request(country_code, number)
       uri = URI.parse(WSDL)
-
-      body = BODY.dup.gsub('{COUNTRY_CODE}', country_code)
-      body = body.gsub('{NUMBER}', number)
-
-      # Create the HTTP objects
-      http = Net::HTTP.new(uri.host, uri.port)
+      body = BODY.dup.gsub('{COUNTRY_CODE}', country_code).gsub('{NUMBER}', number)
+      http = build_http_client(uri)
       request = Net::HTTP::Post.new(uri.request_uri, HEADERS)
       request.body = body
-
-      # Send the request
       http.request(request)
     end
   end
