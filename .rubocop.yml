@@ -19,3 +19,15 @@ Style/CaseLikeIf:
 
 Naming/PredicateMethod:
   Enabled: false
+
+Metrics/ModuleLength:
+  Max: 150
+  CountAsOne: ['hash', 'array']
+
+Metrics/ClassLength:
+  Exclude:
+    - 'test/**/*'
+
+Metrics/MethodLength:
+  Exclude:
+    - 'test/**/*'

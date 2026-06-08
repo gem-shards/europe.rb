@@ -2,6 +2,7 @@
 
 require 'europe/vat/rates'
 require 'europe/vat/format'
+require 'europe/vat/batch'
 require 'uri'
 require 'net/http'
 require 'json'
@@ -37,6 +38,34 @@ module Europe
       :timeout
     rescue Errno::ECONNREFUSED, Errno::ECONNRESET, Errno::ETIMEDOUT, SocketError, OpenSSL::SSL::SSLError
       :service_unavailable
+    end
+
+    def self.validate_with_country_code(country_code, number)
+      return :invalid_input if number.size < 4
+
+      # Remove country code from number if it's present
+      number = number[2..-1] if number[0..1].upcase.to_s == country_code.to_s
+
+      response = send_request(country_code, number)
+      return handle_error_response(response) unless response.is_a?(Net::HTTPSuccess)
+
+      setup_response(response)
+    rescue Net::OpenTimeout, Net::ReadTimeout
+      :timeout
+    rescue Errno::ECONNREFUSED, Errno::ECONNRESET, Errno::ETIMEDOUT, SocketError, OpenSSL::SSL::SSLError
+      :service_unavailable
+    end
+
+    def self.batch_validate(vat_numbers, requester: nil)
+      Batch.validate(vat_numbers, requester: requester)
+    end
+
+    def self.batch_status(token)
+      Batch.status(token)
+    end
+
+    def self.batch_result(token)
+      Batch.result(token)
     end
 
     def self.handle_error_response(response)

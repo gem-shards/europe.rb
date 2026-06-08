@@ -7,6 +7,7 @@ This gem provides EU governmental data, extracted from various EU / EC websites.
 - [Installation](#installation)
 - [Usage](#usage)
   - [Validating VAT numbers](#validating-vat-numbers)
+  - [Batch VAT validation](#batch-vat-validation)
   - [Validate VAT number format](#validate-vat-number-format)
   - [Validate Postal code format](#validate-postal-code-format)
   - [Retrieving VAT rates for each EC/EU member](#retrieving-vat-rates-for-each-eceu-member)
@@ -54,6 +55,34 @@ Response
   :name => "KONINKLIJKE POSTNL B.V.",
   :address => nil }
 ```
+
+### Batch VAT validation
+Validate 3-100 VAT numbers in one request using the VIES batch API. The process is asynchronous: submit numbers, poll for status, then download the report.
+
+**Step 1: Submit batch**
+```ruby
+result = Europe::Vat::Batch.validate(['NL009291477B01', 'BE0123456789', 'DE123456789'])
+# => { token: "a1b2c3d4-..." }
+```
+Optionally pass your own VAT number as requester:
+```ruby
+result = Europe::Vat::Batch.validate(vat_numbers, requester: 'NL009291477B01')
+```
+
+**Step 2: Check status**
+```ruby
+Europe::Vat::Batch.status(result[:token])
+# => { token: "a1b2c3d4-...", filename: "batch.csv", status: :completed,
+#      percentage: 100, created_at: "2026-06-08...", completed_at: "2026-06-08..." }
+```
+
+**Step 3: Download report**
+```ruby
+report = Europe::Vat::Batch.result(result[:token])
+# => { data: "...csv content...", content_type: "text/csv", filename: "report.csv" }
+```
+
+All methods return error symbols on failure (`:timeout`, `:service_unavailable`, `:too_few_rows`, `:too_many_rows`, etc.).
 
 ### Validate VAT number format
 Call

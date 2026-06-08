@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
+## 0.0.28
+  - Added support for batch VAT checks
+  - Updated fallback rates for Estonia and Romania
+  - [Full Changelog](https://github.com/gem-shards/europe.rb/compare/v0.0.27...v0.0.28)
 ## 0.0.27
   - Updated VIES VAT check service to their REST API instead of their SOAP API
   - Improved error handling for the VAT check service
