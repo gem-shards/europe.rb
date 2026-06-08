@@ -1,6 +1,11 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
+## 0.0.27
+  - Updated VIES VAT check service to their REST API instead of their SOAP API
+  - Improved error handling for the VAT check service
+  - Changed the endpoint to check for VAT rates to increase it's stability
+  - [Full Changelog](https://github.com/gem-shards/europe.rb/compare/v0.0.26...v0.0.27)
 ## 0.0.26
   - Removed spaces by default for VAT number format validations, as per request from tim-vandecasteele
   - [Full Changelog](https://github.com/gem-shards/europe.rb/compare/v0.0.25...v0.0.26)

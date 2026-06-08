@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'rexml/document'
+require 'json'
 
 module Europe
   module Vat
@@ -12,8 +12,10 @@ module Europe
         IT: 22.0, LT: 21.0, LU: 17.0, LV: 21.0, MT: 18.0, NL: 21.0, PL: 23.0, PT: 23.0,
         RO: 19.0, SE: 25.0, SI: 22.0, SK: 23.0
       }.freeze
-      RATES_URL = 'https://europa.eu/youreurope/business/taxation/vat' \
-                  '/vat-rules-rates/index_en.htm'
+      RATES_URL = 'https://raw.githubusercontent.com/benbucksch/eu-vat-rates' \
+                  '/refs/heads/master/rates.json'
+
+      COUNTRY_CODE_MAP = { GR: :EL }.freeze
 
       def self.retrieve
         resp = fetch_rates
@@ -22,33 +24,16 @@ module Europe
         extract_rates(resp)
       end
 
-      # rubocop:disable Metrics/MethodLength
       def self.extract_rates(resp)
+        data = JSON.parse(resp)
         rates = {}
-
-        begin
-          data = resp.scan(%r{\<tbody\>(.*)\<\/tbody\>}m).first.first.strip
-        rescue NoMethodError
-          return FALLBACK_RATES
-        end
-
-        xml = REXML::Document.new("<root>#{data}</root>")
-        xml.first.elements.each('tr') do |result|
-          next if result[3].nil?
-
-          rates = filter_rate(result, rates || {})
+        data['rates'].each do |code, info|
+          key = COUNTRY_CODE_MAP[code.to_sym] || code.to_sym
+          rates[key] = info['standard_rate'].to_f
         end
         rates
-      end
-      # rubocop:enable Metrics/MethodLength
-
-      def self.filter_rate(result, rates)
-        return unless result[1].text.size == 2
-
-        country = result[1].text
-        rate = result[5].text
-        rates[country.to_sym] = rate.to_f if country && rate
-        rates
+      rescue JSON::ParserError
+        FALLBACK_RATES
       end
 
       def self.fetch_rates
