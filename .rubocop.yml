@@ -16,3 +16,6 @@ Style/RedundantRegexpCharacterClass:
 
 Style/CaseLikeIf:
   Enabled: false
+
+Naming/PredicateMethod:
+  Enabled: false
