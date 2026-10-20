@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
+## 0.0.29
+  - Added Croatia to Eurozone (oops!)
+  - [Full Changelog](https://github.com/gem-shards/europe.rb/compare/v0.0.28...v0.0.29)
 ## 0.0.28
   - Added support for batch VAT checks
   - Updated fallback rates for Estonia and Romania

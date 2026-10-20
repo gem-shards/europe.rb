@@ -41,7 +41,7 @@ module Europe
             tld: '.fr', currency: :EUR, capital: 'Paris' },
       HR: { name: 'Croatia', source_name: 'Hrvatska',
             official_name: 'Republic of Croatia',
-            tld: '.hr', currency: :HRK, capital: 'Zagreb' },
+            tld: '.hr', currency: :EUR, capital: 'Zagreb' },
       IT: { name: 'Italy', source_name: 'Italia',
             official_name: 'Italian Republic',
             tld: '.it', currency: :EUR, capital: 'Rome' },
